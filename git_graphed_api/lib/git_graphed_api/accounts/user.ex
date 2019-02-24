@@ -3,11 +3,10 @@ defmodule GitGraphedApi.Accounts.User do
   import Ecto.Changeset
 
   schema "users" do
-    field :email, :string
-    field :first_name, :string
-    field :last_name, :string
-    field :password_hash, :string
-    field :role, :string
+    field(:first_name, :string)
+    field(:last_name, :string)
+    field(:email, :string, unique: true)
+    field(:username, :string)
 
     timestamps()
   end
@@ -15,7 +14,7 @@ defmodule GitGraphedApi.Accounts.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:first_name, :last_name, :email, :password_hash, :role])
-    |> validate_required([:first_name, :last_name, :email, :password_hash, :role])
+    |> cast(attrs, [:first_name, :last_name])
+    |> validate_required([:first_name, :last_name])
   end
 end
