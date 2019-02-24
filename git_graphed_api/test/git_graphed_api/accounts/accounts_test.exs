@@ -6,9 +6,19 @@ defmodule GitGraphedApi.AccountsTest do
   describe "users" do
     alias GitGraphedApi.Accounts.User
 
-    @valid_attrs %{first_name: "some first_name", last_name: "some last_name"}
-    @update_attrs %{first_name: "some updated first_name", last_name: "some updated last_name"}
-    @invalid_attrs %{first_name: nil, last_name: nil}
+    @valid_attrs %{
+      first_name: "Git",
+      last_name: "Graphed",
+      email: "gitgraphed@gitgraphed.com",
+      username: "gitgraphed"
+    }
+    @update_attrs %{
+      first_name: "GitGr",
+      last_name: "Aphed",
+      email: "gitgraphed1@gitgraphed.com",
+      username: "gitgraphed1"
+    }
+    @invalid_attrs %{first_name: nil, last_name: nil, email: nil, username: nil}
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
@@ -31,8 +41,10 @@ defmodule GitGraphedApi.AccountsTest do
 
     test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Accounts.create_user(@valid_attrs)
-      assert user.first_name == "some first_name"
-      assert user.last_name == "some last_name"
+      assert user.first_name == @valid_attrs.first_name
+      assert user.last_name == @valid_attrs.last_name
+      assert user.email == @valid_attrs.email
+      assert user.username == @valid_attrs.username
     end
 
     test "create_user/1 with invalid data returns error changeset" do
@@ -42,8 +54,10 @@ defmodule GitGraphedApi.AccountsTest do
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
       assert {:ok, %User{} = user} = Accounts.update_user(user, @update_attrs)
-      assert user.first_name == "some updated first_name"
-      assert user.last_name == "some updated last_name"
+      assert user.first_name == @update_attrs.first_name
+      assert user.last_name == @update_attrs.last_name
+      assert user.email == @update_attrs.email
+      assert user.username == @update_attrs.username
     end
 
     test "update_user/2 with invalid data returns error changeset" do
