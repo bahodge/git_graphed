@@ -12,11 +12,13 @@ defmodule GitGraphedApi.Accounts.User do
   end
 
   @doc false
+  # User.changeset(%User{}, %{first_name: ....})
   def changeset(user, attrs) do
     user
     |> cast(attrs, [:first_name, :last_name, :email, :username])
     |> validate_required([:first_name, :last_name, :email, :username])
     |> validate_format(:email, ~r/@/)
     |> update_change(:email, &String.downcase(&1))
+    |> unique_constraint(:email)
   end
 end
