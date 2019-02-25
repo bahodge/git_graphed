@@ -22,7 +22,7 @@ defmodule GitGraphedApiWeb.Schema do
     @desc "Register a new user"
     field :register_user, type: :user_type do
       arg(:input, non_null(:user_input_type))
-      resolve(&Resolvers.UserResolver.User.register_user/3)
+      resolve(&Resolvers.UserResolvers.User.register_user/3)
     end
   end
 

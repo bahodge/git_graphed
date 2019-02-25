@@ -49,7 +49,7 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
 config :git_graphed_api, GitGraphedApi.Repo,
-  username: "postgres",
+  username: "benjaminhodge",
   password: "qwerty2017!",
   database: "git_graphed_api_dev",
   hostname: "localhost",
