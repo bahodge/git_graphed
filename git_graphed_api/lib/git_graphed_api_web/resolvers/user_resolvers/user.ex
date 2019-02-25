@@ -1,4 +1,4 @@
-defmodule GitGraphedApiWeb.Resolvers.UserResolver do
+defmodule GitGraphedApiWeb.Resolvers.UserResolvers.User do
   alias GitGraphedApi.Accounts
 
   def users(_, _, _) do
