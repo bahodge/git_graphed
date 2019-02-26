@@ -31,6 +31,16 @@
   * start -> `mix phx.server`
     * Now you can visit [`localhost:4000`](http://localhost:4000)
   * open a console with data (rails console) -> `iex -S mix phx.server`
+
+
+### Working with the api
+
+  * The endpoints
+    * GraphQL -> `http://localhost::4000/api/graphql`
+      * This is the non visual endpoint to be used by the frontend
+    * GraphiQL -> `http://localhost::4000/api/graphiql`
+      * Visual interface for testing queries and mutations
+      * Only available when Mix.env == :dev
 <!-- 
 To start your Phoenix server:
   * Install dependencies with `mix deps.get`
