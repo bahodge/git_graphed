@@ -1,14 +1,44 @@
 # GitGraphedApi
 
-To start your Phoenix server:
+### To Run
 
+## Clone the Project
+  * make a folder -> `cd 'some_folder'`
+  * initialize repo -> `git init`
+  * clone project -> `git clone git@github.com:bahodge/git_graphed.git`
+
+## Set up requirements
+
+  * Erlang: Erlang/OTP 21
+  * Elixir: v1.8.0
+  * Phoenix: v1.4.1
+
+## Install Dependencies
+
+  * install -> `mix deps.get`
+
+## Set up database
+
+  * using postgres
+  * use / uncomment the example given in the `./git_graphed_api/config/dev.exs` file
+  * you may have to update your username and password, but I reccomend you just create a new user
+  * Setup Database -> `mix ecto.setup`
+    * Create database -> `mix ecto.create`
+    * Migrate database
+
+
+## Run the server
+
+  * start -> `mix phx.server`
+    * Now you can visit [`localhost:4000`](http://localhost:4000)
+  * open a console with data (rails console) -> `iex -S mix phx.server`
+<!-- 
+To start your Phoenix server:
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
+  * Start Phoenix endpoint with `mix phx.server` -->
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+<!-- Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html). -->
 
 ## Learn more
 
