@@ -7,6 +7,8 @@ defmodule GitGraphedApi.Accounts.User do
     field(:last_name, :string)
     field(:email, :string, unique: true)
     field(:username, :string)
+    field(:provider, :string)
+    field(:token, :string)
 
     timestamps()
   end
@@ -15,8 +17,8 @@ defmodule GitGraphedApi.Accounts.User do
   # User.changeset(%User{}, %{first_name: ....})
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:first_name, :last_name, :email, :username])
-    |> validate_required([:first_name, :last_name, :email, :username])
+    |> cast(attrs, [:first_name, :last_name, :email, :username, :provider, :token])
+    |> validate_required([:email, :provider, :token])
     |> validate_format(:email, ~r/@/)
     |> update_change(:email, &String.downcase(&1))
     |> unique_constraint(:email)

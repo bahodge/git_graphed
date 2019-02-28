@@ -19,7 +19,7 @@ defmodule GitGraphedApi.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {GitGraphedApi.Application, [:httpotion]},
+      mod: {GitGraphedApi.Application, [:ueberauth, :httpotion]},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -45,7 +45,8 @@ defmodule GitGraphedApi.MixProject do
       {:absinthe_ecto, "~> 0.1.3"},
       {:httpotion, "~> 3.1.0"},
       {:poison, "~> 3.1"},
-      {:jason, "~> 1.1"}
+      {:jason, "~> 1.1"},
+      {:ueberauth, "~> 0.5"}
     ]
   end
 

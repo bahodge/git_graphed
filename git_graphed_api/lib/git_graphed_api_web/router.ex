@@ -5,6 +5,15 @@ defmodule GitGraphedApiWeb.Router do
     plug(:accepts, ["json"])
   end
 
+  pipeline :browser do
+    plug(:accepts, ["html"])
+    plug(:fetch_session)
+    plug(:fetch_flash)
+    plug(:protect_from_forgery)
+    plug(:put_secure_browser_headers)
+    plug(GitGraphedApiWeb.Plugs.SetUser)
+  end
+
   scope "/api" do
     pipe_through(:api)
 
@@ -14,5 +23,14 @@ defmodule GitGraphedApiWeb.Router do
     if Mix.env() == :dev do
       forward("/graphiql", Absinthe.Plug.GraphiQL, schema: GitGraphedApiWeb.Schema)
     end
+  end
+
+  scope "/auth", GitGraphedApiWeb do
+    pipe_through(:browser)
+
+    get("/signout", AuthController, :signout)
+    # defined by ueberauth module
+    get("/:provider", AuthController, :request)
+    get("/:provider/callback", AuthController, :callback)
   end
 end
