@@ -18,10 +18,19 @@ defmodule GitGraphedApiWeb.Router do
     pipe_through(:api)
 
     # this is the graphql endpoint
-    forward("/graphql", Absinthe.Plug, schema: GitGraphedApiWeb.Schema)
+    forward("/graphql", Absinthe.Plug,
+      schema: GitGraphedApiWeb.Schema,
+      socket: GitGraphedApiWeb.UserSocket
+    )
 
     if Mix.env() == :dev do
-      forward("/graphiql", Absinthe.Plug.GraphiQL, schema: GitGraphedApiWeb.Schema)
+      forward("/graphiql", Absinthe.Plug.GraphiQL,
+        schema: GitGraphedApiWeb.Schema,
+        socket: GitGraphedApiWeb.UserSocket
+
+        # ,
+        # context: %{pubsub: GitGraphedWeb.Endpoint}
+      )
     end
   end
 

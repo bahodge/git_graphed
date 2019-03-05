@@ -5,13 +5,23 @@ defmodule GitGraphedApi.Application do
 
   use Application
 
+  def absinthe_subscriptions(name) do
+    %{
+      type: :supervisor,
+      id: Absinthe.Subscription,
+      start: {Absinthe.Subscription, :start_link, [name]}
+    }
+  end
+
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
       # Start the Ecto repository
       GitGraphedApi.Repo,
       # Start the endpoint when the application starts
-      GitGraphedApiWeb.Endpoint
+      GitGraphedApiWeb.Endpoint,
+      absinthe_subscriptions(GitGraphedApiWeb.Endpoint)
+
       # Starts a worker by calling: GitGraphedApi.Worker.start_link(arg)
       # {GitGraphedApi.Worker, arg},
     ]

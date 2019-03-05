@@ -1,9 +1,13 @@
 defmodule GitGraphedApiWeb.UserSocket do
   use Phoenix.Socket
 
-  ## Channels
-  # channel "room:*", GitGraphedApiWeb.RoomChannel
+  use Absinthe.Phoenix.Socket,
+    schema: GitGraphedApiWeb.Schema
 
+  ## Channels
+  channel("__absinthe__:control", GitGraphedApiWeb.AbsintheChannel)
+
+  # transport(:websocket, Phoenix.Transports.WebSocket)
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
   # verification, you can put default assigns into

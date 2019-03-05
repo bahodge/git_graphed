@@ -15,6 +15,11 @@ defmodule GitGraphedApiWeb.Schema do
       # resolver
       resolve(&Resolvers.UserResolvers.User.users/3)
     end
+
+    @desc "all links"
+    field :all_links, non_null(list_of(non_null(:link))) do
+      resolve(&Resolvers.NewsResolver.all_links/3)
+    end
   end
 
   # mutations
@@ -25,8 +30,4 @@ defmodule GitGraphedApiWeb.Schema do
       resolve(&Resolvers.UserResolvers.User.register_user/3)
     end
   end
-
-  # subscriptions
-  # subscription do
-  # end
 end

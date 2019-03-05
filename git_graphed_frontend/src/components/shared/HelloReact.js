@@ -3,19 +3,22 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
 const USERS = gql`
-	query users {
-		id
-		firstName
-		lastName
+	query Users {
+		users {
+			id
+			firstName
+			lastName
+		}
 	}
 `;
 
-const HelloReact = (props) => {
+const HelloReact = () => {
 	return (
 		<div>
 			<Query query={USERS}>
 				{({ loading, error, data }) => {
-					if (loading) return <p>Loading...</p>;
+					if (loading) console.log(USERS);
+					if (loading) return <p>Loading...maybe, idk</p>;
 					if (error) return <p>Error :(</p>;
 					return data.users.map(({ firstName, lastName, id }) => (
 						<div key={id}>{`${firstName} ${lastName}`}</div>
