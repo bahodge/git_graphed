@@ -4,5 +4,4 @@ defmodule GitGraphedApiWeb.Schema.Types.TypesLoader do
   alias GitGraphedApiWeb.Schema.Types
 
   import_types(Types.UserType)
-  import_types(Types.LinkType)
 end

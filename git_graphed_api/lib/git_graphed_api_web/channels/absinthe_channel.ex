@@ -6,11 +6,13 @@ defmodule GitGraphedApiWeb.AbsintheChannel do
     {:ok, %{channel: channel_name}, socket}
   end
 
-  # @spec handle_in(binary(), map(), Phoenix.Socket.t()) :: {:noreply, Phoenix.Socket.t()}
   def handle_in(_msg, %{"query" => query, "variables" => variables}, socket) do
     response =
       query
-      |> Absinthe.run(GitGraphedApiWeb.Schema, variables: variables)
+      |> Absinthe.run(GitGraphedApiWeb.Schema,
+        variables: variables,
+        context: %{current_user: %{id: "1"}}
+      )
 
     # broadcast!(socket, _msg, %{"query" => query})
     {:reply, response, socket}

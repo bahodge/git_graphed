@@ -16,9 +16,10 @@ defmodule GitGraphedApiWeb.Schema do
       resolve(&Resolvers.UserResolvers.User.users/3)
     end
 
-    @desc "all links"
-    field :all_links, non_null(list_of(non_null(:link))) do
-      resolve(&Resolvers.NewsResolver.all_links/3)
+    @desc "Get one user"
+    field :user, :user_type do
+      arg(:id, non_null(:id))
+      resolve(&Resolvers.UserResolvers.User.user/3)
     end
   end
 
@@ -26,7 +27,7 @@ defmodule GitGraphedApiWeb.Schema do
   mutation do
     @desc "Register a new user"
     field :register_user, type: :user_type do
-      arg(:input, non_null(:user_input_type))
+      arg(:input, non_null(:user_create_input_type))
       resolve(&Resolvers.UserResolvers.User.register_user/3)
     end
   end
