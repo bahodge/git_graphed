@@ -1,22 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import { ApolloProvider } from 'react-apollo';
-// import ApolloClient from 'apollo-boost';
 import HelloReact from './components/shared/HelloReact';
 import ApolloClient from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import absintheSocketLink from './absinthe-socket-link';
-
-// const link = split(
-// 	(operation) => hasSubscription(operation.query),
-// 	absintheSocketLink,
-// 	createHttpLink({ uri: 'api/graphql' })
-// );
-
-// const client = new ApolloClient({
-// 	link,
-// 	cache: new InMemoryCache()
-// });
+import absintheSocketLink from './config/absinthe-socket-link';
 
 const client = new ApolloClient({
 	// link: 'http://localhost.4000/api/graphql',

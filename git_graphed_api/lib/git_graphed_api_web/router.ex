@@ -14,7 +14,7 @@ defmodule GitGraphedApiWeb.Router do
     plug(GitGraphedApiWeb.Plugs.SetUser)
   end
 
-  scope "/api" do
+  scope "/" do
     pipe_through(:api)
 
     # this is the graphql endpoint
