@@ -8,6 +8,5 @@ defmodule GitGraphedApi.Repo.Migrations.CreateLinks do
 
       timestamps()
     end
-
   end
 end
