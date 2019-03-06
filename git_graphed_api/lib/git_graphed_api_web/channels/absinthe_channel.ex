@@ -14,7 +14,6 @@ defmodule GitGraphedApiWeb.AbsintheChannel do
         context: %{current_user: %{id: "1"}}
       )
 
-    # broadcast!(socket, _msg, %{"query" => query})
     {:reply, response, socket}
   end
 end

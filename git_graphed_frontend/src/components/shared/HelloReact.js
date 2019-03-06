@@ -18,6 +18,7 @@ const ONE_USER = gql`
 			id
 			firstName
 			lastName
+			email
 		}
 	}
 `;
@@ -51,8 +52,13 @@ export default class HelloReact extends Component {
 					{({ loading, error, data }) => {
 						if (loading) return <p>Loading...maybe, idk</p>;
 						if (error) return <p>Error :(</p>;
-						const { firstName, lastName, id } = data.user;
-						return <div>{`${id} ${firstName} ${lastName}`}</div>;
+						const { firstName, lastName, id, email } = data.user;
+						return (
+							<div>
+								<h4>{`${firstName} ${lastName}`}</h4>
+								<p>{`${id} - ${email}`}</p>
+							</div>
+						);
 					}}
 				</Query>
 			</div>

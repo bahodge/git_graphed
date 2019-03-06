@@ -6,13 +6,9 @@ defmodule GitGraphedApiWeb.Schema do
   # import Types
   import_types(GitGraphedApiWeb.Schema.Types.TypesLoader)
 
-  # import Resolvers
-
-  # query
   query do
     @desc "Get a list of all the users :)"
     field :users, list_of(:user_type) do
-      # resolver
       resolve(&Resolvers.UserResolvers.User.users/3)
     end
 
@@ -23,7 +19,6 @@ defmodule GitGraphedApiWeb.Schema do
     end
   end
 
-  # mutations
   mutation do
     @desc "Register a new user"
     field :register_user, type: :user_type do
