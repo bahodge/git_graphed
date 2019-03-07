@@ -1,5 +1,6 @@
 defmodule GitGraphedApi.Accounts.User do
   use Ecto.Schema
+  import Ecto.Queryable
   import Ecto.Changeset
 
   schema "users" do
