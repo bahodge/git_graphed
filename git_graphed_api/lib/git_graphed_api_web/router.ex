@@ -11,13 +11,10 @@ defmodule GitGraphedApiWeb.Router do
     plug(:fetch_flash)
     plug(:protect_from_forgery)
     plug(:put_secure_browser_headers)
-    # plug(GitGraphedApiWeb.Plugs.SetUser)
   end
 
   scope "/" do
     pipe_through(:api)
-
-    # forward("/", to: "http://localhost:3000")
 
     # this is the graphql endpoint
     forward("/graphql", Absinthe.Plug,
@@ -29,9 +26,6 @@ defmodule GitGraphedApiWeb.Router do
       forward("/graphiql", Absinthe.Plug.GraphiQL,
         schema: GitGraphedApiWeb.Schema,
         socket: GitGraphedApiWeb.UserSocket
-
-        # ,
-        # context: %{pubsub: GitGraphedWeb.Endpoint}
       )
     end
   end

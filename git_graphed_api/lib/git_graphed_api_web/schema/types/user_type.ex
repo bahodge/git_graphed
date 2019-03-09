@@ -10,8 +10,8 @@ defmodule GitGraphedApiWeb.Schema.Types.UserType do
   end
 
   input_object :user_create_input_type do
-    field(:first_name, non_null(:string))
-    field(:last_name, non_null(:string))
+    field(:token, non_null(:string))
+    field(:provider, non_null(:string))
     field(:email, non_null(:string))
     field(:username, non_null(:string))
   end

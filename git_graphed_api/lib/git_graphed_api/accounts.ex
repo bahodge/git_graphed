@@ -101,4 +101,8 @@ defmodule GitGraphedApi.Accounts do
   def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
+
+  def get_by(User, username) do
+    Repo.get_by(User, username: username)
+  end
 end

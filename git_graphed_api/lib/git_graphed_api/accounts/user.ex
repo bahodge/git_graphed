@@ -19,7 +19,7 @@ defmodule GitGraphedApi.Accounts.User do
   def changeset(user, attrs) do
     user
     |> cast(attrs, [:first_name, :last_name, :email, :username, :provider, :token])
-    |> validate_required([:email, :provider, :token])
+    |> validate_required([:email, :provider, :token, :username])
     |> validate_format(:email, ~r/@/)
     |> update_change(:email, &String.downcase(&1))
     |> unique_constraint(:email)

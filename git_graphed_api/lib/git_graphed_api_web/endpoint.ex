@@ -42,7 +42,8 @@ defmodule GitGraphedApiWeb.Endpoint do
   plug(Plug.Session,
     store: :cookie,
     key: "_git_graphed_api_key",
-    signing_salt: "FJkfVgxy"
+    signing_salt: "FJkfVgxy",
+    log: :debug
   )
 
   plug(GitGraphedApiWeb.Router)
