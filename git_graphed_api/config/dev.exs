@@ -47,6 +47,8 @@ config :phoenix, :stacktrace_depth, 20
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
 
+config :git_graphed_api, :environment, :dev
+
 # Configure your database # EXAMPLE!
 # config :git_graphed_api, GitGraphedApi.Repo,
 #   username: "your_username_for_your_local_database",
