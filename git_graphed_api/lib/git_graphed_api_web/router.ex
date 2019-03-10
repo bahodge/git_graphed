@@ -3,7 +3,6 @@ defmodule GitGraphedApiWeb.Router do
 
   pipeline :api do
     plug(:accepts, ["json"])
-    plug(GitGraphedApiWeb.Context)
   end
 
   pipeline :browser do

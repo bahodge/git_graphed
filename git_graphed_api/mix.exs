@@ -47,7 +47,8 @@ defmodule GitGraphedApi.MixProject do
       {:httpoison, "~> 1.4"},
       {:poison, "~> 3.1"},
       {:jason, "~> 1.1"},
-      {:ueberauth_github, "~> 0.7"}
+      {:ueberauth_github, "~> 0.7"},
+      {:envy, "~> 1.1.1"}
     ]
   end
 

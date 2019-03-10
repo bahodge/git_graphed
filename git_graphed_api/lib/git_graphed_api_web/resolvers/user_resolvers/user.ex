@@ -1,15 +1,15 @@
 defmodule GitGraphedApiWeb.Resolvers.UserResolvers.User do
   alias GitGraphedApi.Accounts
 
-  @desc "Get all users"
-  def users(_parent, _args, info) do
-    %{context: %{current_user: current_user}} = info
+  # @desc "Get all users"
+  def users(_parent, _args, _info) do
+    # %{context: %{current_user: current_user}} = info
     {:ok, Accounts.list_users()}
   end
 
-  @desc "Get one user"
-  def user(_parent, %{id: id} = args, info) do
-    %{context: %{current_user: current_user}} = info
+  # @desc "Get one user"
+  def user(_parent, %{id: id} = _args, _info) do
+    # %{context: %{current_user: current_user}} = info
 
     case Accounts.get_user!(id) do
       nil ->

@@ -1,7 +1,7 @@
 defmodule GitGraphedApiWeb.UserSocket do
   use Phoenix.Socket
 
-  alias GitGraphedApi.{Accounts, Accounts.User}
+  alias GitGraphedApi.Accounts
 
   use Absinthe.Phoenix.Socket,
     schema: GitGraphedApiWeb.Schema
@@ -22,16 +22,14 @@ defmodule GitGraphedApiWeb.UserSocket do
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
   def connect(%{"userId" => userId}, socket, _connect_info) do
+    # this requires that a user be logged in
     if userId do
       {:ok, user_id} =
         Phoenix.Token.verify(GitGraphedApiWeb.Endpoint, "FJkfVgxy", userId, max_age: 86400)
 
       case Accounts.get_user(user_id) do
-        user ->
+        _user ->
           {:ok, socket}
-
-        nil ->
-          {:error, socket}
       end
     else
       {:error, socket}

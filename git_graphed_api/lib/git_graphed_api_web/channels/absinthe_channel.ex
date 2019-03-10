@@ -3,11 +3,11 @@ defmodule GitGraphedApiWeb.AbsintheChannel do
 
   # plug(GitGraphedApiWeb.Context)
 
-  def join(channel_name, _payload, socket) do
+  def join(_channel_name, _payload, socket) do
     {:ok, socket}
   end
 
-  def handle_in(_msg, %{"query" => query, "variables" => variables} = params, socket) do
+  def handle_in(_msg, %{"query" => query, "variables" => variables} = _params, socket) do
     response =
       query
       |> Absinthe.run(

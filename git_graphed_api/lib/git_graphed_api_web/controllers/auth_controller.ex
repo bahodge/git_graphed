@@ -13,6 +13,7 @@ defmodule GitGraphedApiWeb.AuthController do
 
   def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
     user = find_or_create_user_from_auth(auth)
+
     encrypted_user_id = Phoenix.Token.sign(GitGraphedApiWeb.Endpoint, "FJkfVgxy", user.id)
 
     conn
@@ -30,11 +31,9 @@ defmodule GitGraphedApiWeb.AuthController do
     token = auth.credentials.token
 
     # emails are unique indexes, but users can have multiple email addresses, so i think that username is better
-    case Accounts.get_by_username(User, username) do
-      user ->
-        Accounts.update_user(user, %{token: token, provider: "github"})
-        user
+    user = Accounts.get_by_username(User, username)
 
+    case user do
       nil ->
         attrs = %{
           username: username,
@@ -44,6 +43,10 @@ defmodule GitGraphedApiWeb.AuthController do
         }
 
         Accounts.create_user(attrs)
+
+      user ->
+        Accounts.update_user(user, %{token: token, provider: "github"})
+        user
     end
   end
 end
