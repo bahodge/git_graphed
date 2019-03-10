@@ -10,6 +10,7 @@ defmodule GitGraphedApi.Accounts.User do
     field(:username, :string)
     field(:provider, :string)
     field(:token, :string)
+    has_many(:public_repos, GitGraphedApi.Repositories.PublicRepo)
 
     timestamps()
   end
