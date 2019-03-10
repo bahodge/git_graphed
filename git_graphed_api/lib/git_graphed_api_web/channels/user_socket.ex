@@ -1,6 +1,8 @@
 defmodule GitGraphedApiWeb.UserSocket do
   use Phoenix.Socket
 
+  alias GitGraphedApi.{Accounts, Accounts.User}
+
   use Absinthe.Phoenix.Socket,
     schema: GitGraphedApiWeb.Schema
 
@@ -19,8 +21,17 @@ defmodule GitGraphedApiWeb.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  def connect(params, socket, _connect_info) do
-    {:ok, socket}
+  def connect(%{"userId" => userId}, socket, _connect_info) do
+    {:ok, user_id} =
+      Phoenix.Token.verify(GitGraphedApiWeb.Endpoint, "FJkfVgxy", userId, max_age: 86400)
+
+    case Accounts.get_user(user_id) do
+      user ->
+        {:ok, socket}
+
+      nil ->
+        {:error, socket}
+    end
   end
 
   # Socket id's are topics that allow you to identify all sockets for a given user:

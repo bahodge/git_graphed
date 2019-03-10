@@ -36,6 +36,7 @@ defmodule GitGraphedApi.Accounts do
 
   """
   def get_user!(id), do: Repo.get!(User, id)
+  def get_user(id), do: Repo.get(User, id)
 
   @doc """
   Creates a user.
@@ -102,7 +103,11 @@ defmodule GitGraphedApi.Accounts do
     User.changeset(user, %{})
   end
 
-  def get_by(User, username) do
+  def get_by_email(User, email) do
+    Repo.get_by(User, email: email)
+  end
+
+  def get_by_username(User, username) do
     Repo.get_by(User, username: username)
   end
 end
