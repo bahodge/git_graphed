@@ -2,14 +2,16 @@ defmodule GitGraphedApiWeb.Context do
   @behaviour Plug
 
   import Plug.Conn
+  import Plug.Conn.Cookies
   import Ecto.Query, only: [where: 2]
 
-  alias GitGraphedApi.{Repo, User}
+  alias GitGraphedApi.{Accounts, Accounts.User}
 
   def init(opts), do: opts
 
   def call(conn, _) do
     context = build_context(conn)
+
     Absinthe.Plug.put_options(conn, context: context)
   end
 
@@ -17,21 +19,21 @@ defmodule GitGraphedApiWeb.Context do
   Return the current user context based on the authorization header
   """
   def build_context(conn) do
-    with ["Bearer " <> token] <- get_req_header(conn, "authorization"),
-         {:ok, current_user} <- authorize(token) do
-      %{current_user: current_user}
-    else
-      _ -> %{}
-    end
-  end
+    cookie = get_req_header(conn, "cookie")
+    [pulled_cookie | _] = cookie
+    decoded_cookie = decode(pulled_cookie)
 
-  defp authorize(token) do
-    User
-    |> where(token: ^token)
-    |> Repo.one()
-    |> case do
-      nil -> {:error, "invalid authorization token"}
-      user -> {:ok, user}
+    {:ok, user_id} =
+      Phoenix.Token.verify(GitGraphedApiWeb.Endpoint, "FJkfVgxy", decoded_cookie["userId"],
+        max_age: 86400
+      )
+
+    case Accounts.get_user(user_id) do
+      user ->
+        %{current_user: user}
+
+      _ ->
+        %{}
     end
   end
 end
