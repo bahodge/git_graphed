@@ -24,7 +24,7 @@ export default class AllUsers extends Component {
 						return data.users.map(({ firstName, lastName, id }) => {
 							return (
 								<Link key={id} to={`/users/${id}`}>
-									<div>{`${firstName}`}</div>
+									<div>{`${firstName} ${lastName}`}</div>
 								</Link>
 							);
 						});

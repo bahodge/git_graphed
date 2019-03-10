@@ -22,15 +22,19 @@ defmodule GitGraphedApiWeb.UserSocket do
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
   def connect(%{"userId" => userId}, socket, _connect_info) do
-    {:ok, user_id} =
-      Phoenix.Token.verify(GitGraphedApiWeb.Endpoint, "FJkfVgxy", userId, max_age: 86400)
+    if userId do
+      {:ok, user_id} =
+        Phoenix.Token.verify(GitGraphedApiWeb.Endpoint, "FJkfVgxy", userId, max_age: 86400)
 
-    case Accounts.get_user(user_id) do
-      user ->
-        {:ok, socket}
+      case Accounts.get_user(user_id) do
+        user ->
+          {:ok, socket}
 
-      nil ->
-        {:error, socket}
+        nil ->
+          {:error, socket}
+      end
+    else
+      {:error, socket}
     end
   end
 

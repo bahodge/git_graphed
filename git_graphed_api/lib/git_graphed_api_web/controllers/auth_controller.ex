@@ -5,6 +5,12 @@ defmodule GitGraphedApiWeb.AuthController do
   alias Ueberauth.Strategy.Helpers
   alias GitGraphedApi.{Accounts, Accounts.User}
 
+  def signout(conn, _params) do
+    conn
+    |> delete_resp_cookie("userId")
+    |> redirect(external: "http://localhost:3000")
+  end
+
   def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
     user = find_or_create_user_from_auth(auth)
     encrypted_user_id = Phoenix.Token.sign(GitGraphedApiWeb.Endpoint, "FJkfVgxy", user.id)
@@ -14,7 +20,7 @@ defmodule GitGraphedApiWeb.AuthController do
       max_age: 10 * 24 * 60 * 60,
       http_only: false
     )
-    |> redirect(external: "http://localhost:3000")
+    |> redirect(external: "http://localhost:3000/users")
   end
 
   defp find_or_create_user_from_auth(auth) do

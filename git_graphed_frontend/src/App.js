@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import Main from './routing/Main';
+import Header from './components/shared/Header';
 
 class App extends Component {
 	render() {
 		return (
-			<div className="center w85">
-				<div className="ph3 pv1 background-gray">
+			<div>
+				<Header />
+				<div>
 					<Main />
 				</div>
 			</div>

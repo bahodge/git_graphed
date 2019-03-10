@@ -1,23 +1,27 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import cookie from 'react-cookies';
 
 class Header extends Component {
+	userId = cookie.load('userId');
 	render() {
-		return (
-			<div className="flex pa1 justify-between nowrap orange">
-				<div className="flex flex-fixed black">
-					<div className="fw7 mr1">Super Awesome!</div>
-					<Link to="/" className="ml1 no-underline black">
-						new
-					</Link>
-					<div>|</div>
-					<Link to="/create" className="ml1 no-underline black">
-						submit
-					</Link>
+		if (this.userId) {
+			return (
+				<div>
+					<a href={'http://localhost:4000/auth/signout'}>
+						<button>Log Out</button>
+					</a>
 				</div>
-			</div>
-		);
+			);
+		} else {
+			return (
+				<div>
+					<a href={'http://localhost:4000/auth/github'}>
+						<button>Sign in with github</button>
+					</a>
+				</div>
+			);
+		}
 	}
 }
 
