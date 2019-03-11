@@ -17,7 +17,7 @@ defmodule GitGraphedApi.Repositories do
       [%PublicRepo{}, ...]
 
   """
-  def list_public_repo do
+  def list_public_repos do
     Repo.all(PublicRepo)
   end
 

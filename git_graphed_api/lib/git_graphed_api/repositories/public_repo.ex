@@ -12,7 +12,7 @@ defmodule GitGraphedApi.Repositories.PublicRepo do
   @doc false
   def changeset(public_repo, attrs) do
     public_repo
-    |> cast(attrs, [:name, :user])
-    |> validate_required([:name, :user])
+    |> cast(attrs, [:name, :user_id])
+    |> validate_required([:name, :user_id])
   end
 end
