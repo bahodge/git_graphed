@@ -36,6 +36,7 @@ defmodule GitGraphedApi.Repositories do
 
   """
   def get_public_repo!(id), do: Repo.get!(PublicRepo, id)
+  def get_public_repo(id), do: Repo.get(PublicRepo, id)
 
   @doc """
   Creates a public_repo.
