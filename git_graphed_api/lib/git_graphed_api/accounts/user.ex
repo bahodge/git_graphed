@@ -3,7 +3,7 @@ defmodule GitGraphedApi.Accounts.User do
   import Ecto.Queryable
   import Ecto.Changeset
 
-  alias GitGraphedApi.Repositories.PublicRepo
+  alias GitGraphedApi.Repos.Repository
 
   schema "users" do
     field(:first_name, :string)
@@ -12,7 +12,7 @@ defmodule GitGraphedApi.Accounts.User do
     field(:username, :string)
     field(:provider, :string)
     field(:token, :string)
-    has_many(:public_repos, PublicRepo)
+    has_many(:repos, Repository)
 
     timestamps()
   end
