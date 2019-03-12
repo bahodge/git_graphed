@@ -17,9 +17,9 @@ defmodule Github.Sync.PublicRepos do
       Poison.Parser.parse!(response.body)
       |> Enum.map(fn repo ->
         %{
-          id: repo["id"],
-          name: repo["name"],
-          private: repo["private"]
+          repo_id: repo["id"],
+          repo_name: repo["name"],
+          repo_private: repo["private"]
         }
       end)
   end
