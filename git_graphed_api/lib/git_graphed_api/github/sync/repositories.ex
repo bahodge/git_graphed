@@ -14,7 +14,7 @@ defmodule Github.Sync.Repositories do
 
     make_request!(url, headers(oauth_token), options())
     |> Enum.each(fn repo ->
-      update_or_create_repository(repo[:repo_id], repo)
+      update_or_create_repository(repo[:repo_id], user_id, repo)
     end)
   end
 
@@ -69,7 +69,8 @@ defmodule Github.Sync.Repositories do
   def update_or_create_repository(repo_id, user_id, attrs \\ %{}) do
     case find_repository_by_repo_id(repo_id) do
       nil ->
-        Repos.create_repository(attrs)
+        attributes = Map.put(attrs, :user_id, user_id)
+        Repos.create_repository(attributes)
 
       repository ->
         attributes = Map.put(attrs, :user_id, user_id)
