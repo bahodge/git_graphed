@@ -12,7 +12,7 @@ defmodule GitGraphedApi.Accounts.User do
     field(:username, :string)
     field(:provider, :string)
     field(:token, :string)
-    has_many(:repos, Repository)
+    has_many(:repositories, Repository)
 
     timestamps()
   end

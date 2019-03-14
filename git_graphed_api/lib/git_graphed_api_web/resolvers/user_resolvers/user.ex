@@ -1,5 +1,8 @@
 defmodule GitGraphedApiWeb.Resolvers.UserResolvers.User do
+  import Ecto.Query
   alias GitGraphedApi.Accounts
+  alias GitGraphedApi.Repos.Repository
+  alias GitGraphedApi.Repo
 
   # @desc "Get all users"
   def users(_parent, _args, _info) do

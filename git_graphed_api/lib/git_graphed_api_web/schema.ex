@@ -17,6 +17,16 @@ defmodule GitGraphedApiWeb.Schema do
       arg(:id, non_null(:id))
       resolve(&Resolvers.UserResolvers.User.user/3)
     end
+
+    @desc "Get All Repositories"
+    field :repositories, list_of(:repository_type) do
+      resolve(&Resolvers.UserResolvers.Repositories.repositories/3)
+    end
+
+    field :user_repositories, list_of(:repository_type) do
+      arg(:user_id, non_null(:id))
+      resolve(&Resolvers.UserResolvers.Repositories.repositories/3)
+    end
   end
 
   mutation do
