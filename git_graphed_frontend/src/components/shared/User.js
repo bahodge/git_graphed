@@ -3,6 +3,8 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
 
+// import USERQUERY from '../graphql/UserQuery.graphql';
+
 const USER = gql`
 	query User($id: ID!) {
 		user(id: $id) {

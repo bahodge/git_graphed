@@ -3,9 +3,9 @@ import { withRouter } from 'react-router';
 import cookie from 'react-cookies';
 
 class Header extends Component {
-	userId = cookie.load('userId');
 	render() {
-		if (this.userId) {
+		const userId = cookie.load('userId');
+		if (userId) {
 			return (
 				<div>
 					<a href={'http://localhost:4000/auth/signout'}>
