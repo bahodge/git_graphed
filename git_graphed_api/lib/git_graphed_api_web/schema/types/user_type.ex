@@ -9,9 +9,8 @@ defmodule GitGraphedApiWeb.Schema.Types.UserType do
     field(:email, :string)
     field(:username, :string)
 
-    field(:user_repositories, list_of(:repository_type)) do
-      arg(:user_id, :id)
-      resolve(&Resolvers.RepositoryResolvers.Repository.user_repositories/3)
+    field(:repositories, list_of(:repository_type)) do
+      resolve(&Resolvers.RepositoryResolvers.Repository.repositories/3)
     end
   end
 
