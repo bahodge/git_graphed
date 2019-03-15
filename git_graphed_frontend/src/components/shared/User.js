@@ -1,20 +1,8 @@
 import React, { Component } from 'react';
-import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
 
-// import USERQUERY from '../graphql/UserQuery.graphql';
-
-const USER = gql`
-	query User($id: ID!) {
-		user(id: $id) {
-			id
-			firstName
-			lastName
-			email
-		}
-	}
-`;
+import USER_QUERY from '../graphql/queries/users/UserQuery';
 
 export default class User extends Component {
 	render() {
@@ -22,7 +10,7 @@ export default class User extends Component {
 
 		return (
 			<div>
-				<Query query={USER} variables={{ id: id }}>
+				<Query query={USER_QUERY} variables={{ id: id }}>
 					{({ loading, error, data }) => {
 						if (loading) return <p>Loading...maybe, idk</p>;
 						if (error) return <p>Error</p>;

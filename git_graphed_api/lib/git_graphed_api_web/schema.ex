@@ -9,8 +9,8 @@ defmodule GitGraphedApiWeb.Schema do
 
   query do
     @desc "Get a list of all the users :)"
-    field :users, list_of(:user_type) do
-      resolve(&UserResolvers.User.users/3)
+    field :all_users, list_of(:user_type) do
+      resolve(&UserResolvers.User.all_users/3)
     end
 
     @desc "Get one user"
