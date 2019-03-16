@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 import Main from './routing/Main';
-import Header from './components/shared/Header';
+import Page from './components/shared/Page';
+import NavBar from './components/shared/NavBar';
 
 class App extends Component {
 	render() {
 		return (
-			<div>
-				<Header />
-				<div>
-					<Main />
-				</div>
-			</div>
+			<Page>
+				<NavBar />
+				<Main />
+			</Page>
 		);
 	}
 }
