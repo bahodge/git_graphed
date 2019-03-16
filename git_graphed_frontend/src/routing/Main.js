@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import AllUsers from '../components/shared/AllUsers';
-import User from '../components/shared/User';
+import User from '../components/user/User';
 import Landing from '../components/shared/Landing';
 
 export default class Main extends Component {

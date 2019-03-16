@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
 
+import UserRepositories from './UserRepositories';
+
 import USER_QUERY from '../graphql/queries/users/UserQuery';
 
 export default class User extends Component {
@@ -26,7 +28,8 @@ export default class User extends Component {
 						);
 					}}
 				</Query>
-				<Link to={'/'}>Home</Link>
+				<UserRepositories userId={id} />
+				<Link to={'/users'}>Home</Link>
 			</div>
 		);
 	}

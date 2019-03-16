@@ -1,7 +1,7 @@
 defmodule GitGraphedApiWeb.Resolvers.RepositoryResolvers.Repository do
   import Ecto.Query
+  alias GitGraphedApi.Accounts.User
   alias GitGraphedApi.Repos
-  alias GitGraphedApi.{Accounts, Accounts.User}
   alias GitGraphedApi.Repo
 
   @desc "Get Repositories for user"
@@ -26,8 +26,14 @@ defmodule GitGraphedApiWeb.Resolvers.RepositoryResolvers.Repository do
     {:ok, Repo.one(query)}
   end
 
-  # @desc "Get all repositories"
-  # def repositories(_parent, _args, _info) do
-  #   {:ok, Repos.list_repositories()}
-  # end
+  @desc "Repositories for a particular user"
+  def user_repositories(_parent, %{id: user_id} = _args, _info) do
+    query =
+      from(repo in Repos.Repository,
+        where: repo.user_id == ^user_id,
+        select: repo
+      )
+
+    {:ok, Repo.all(query)}
+  end
 end
