@@ -6,10 +6,10 @@ import USER_REPOSITORIES_QUERY from '../graphql/queries/repositories/UserReposit
 
 export default class UserRepositories extends Component {
 	render() {
-		const { userId } = this.props;
+		const { userId: id } = this.props.match.params;
 		return (
 			<div>
-				<Query query={USER_REPOSITORIES_QUERY} variables={{ id: userId }}>
+				<Query query={USER_REPOSITORIES_QUERY} variables={{ id: id }}>
 					{({ loading, error, data }) => {
 						if (loading) return <p>Loading...maybe, idk</p>;
 						if (error) return <p>Error</p>;

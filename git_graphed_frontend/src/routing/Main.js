@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
-import AllUsers from '../components/shared/AllUsers';
-import User from '../components/user/User';
-import Landing from '../components/shared/Landing';
+import { Switch } from 'react-router-dom';
+
+import UserRoutes from './UserRoutes';
+import PublicRoutes from './PublicRoutes';
 
 export default class Main extends Component {
 	render() {
 		return (
-			<div>
-				<Switch>
-					<Route exact path="/users/:userId" component={User} />
-					<Route exact path="/users" component={AllUsers} />
-					<Route exact path="/" component={Landing} />
-				</Switch>
-			</div>
+			<Switch>
+				<UserRoutes />
+				<PublicRoutes />
+			</Switch>
 		);
 	}
 }
