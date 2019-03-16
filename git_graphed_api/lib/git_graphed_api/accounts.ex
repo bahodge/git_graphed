@@ -110,4 +110,8 @@ defmodule GitGraphedApi.Accounts do
   def get_by_username(User, username) do
     Repo.get_by(User, username: username)
   end
+
+  def get_by_github_id(User, github_id) do
+    Repo.get_by(User, github_id: github_id)
+  end
 end
