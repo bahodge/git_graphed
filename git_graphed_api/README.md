@@ -25,6 +25,25 @@
     * Create database -> `mix ecto.create`
     * Migrate database -> `mix ecto.migrate`
 
+### Secrets
+  * create a `dev.secret.exs` file in `./config/`
+    * The following lines of code should be copied into that file
+    * PM Ben for the Deets -> This should be git-secret
+
+  * `config :git_graphed_api, GitGraphedApiWeb.Endpoint,
+      secret_key_base: "SECRET_KEY_BASE"`
+
+  * `config :ueberauth, Ueberauth.Strategy.Github.OAuth,
+      client_id: "CLIENT_ID",
+      client_secret: "CLIENT_SECRET"`
+
+  * `config :git_graphed_api, GitGraphedApi.Repo,
+      username: "DB_USERNAME",
+      password: "DB_PASSWORD",
+      database: "git_graphed_api_dev",
+      pool_size: 10`
+
+
 
 ### Run the server
 
@@ -56,7 +75,3 @@ To start your Phoenix server:
   * Docs: https://hexdocs.pm/phoenix
   * Mailing list: http://groups.google.com/group/phoenix-talk
   * Source: https://github.com/phoenixframework/phoenix
-
-
-
-; prefix=C:\Program Files\nodejs
