@@ -3,7 +3,7 @@
 ## What is?
 
 Git Graphed is an open source project whose purpose is to give better data visualization tools for GitHub repositories
-This is a passion project and does not look to make any money. All we're really doing is getting practice with some of the latest technologies for both frontend and backend.
+This is a passion project. All we're really doing is getting practice with some of the latest technologies for both frontend and backend.
 
 ## whoami
 
