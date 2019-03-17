@@ -12,7 +12,6 @@ const MetaHead = () => {
 };
 
 const Page = ({ children }) => {
-	console.log(children);
 	return (
 		<div>
 			<MetaHead />

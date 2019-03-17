@@ -11,38 +11,26 @@ const styles = {
 		minWidth: 275,
 		maxWidth: 600
 	},
-	bullet: {
-		display: 'inline-block',
-		margin: '0 2px',
-		transform: 'scale(0.8)'
-	},
 	title: {
-		fontSize: 20
-	},
-	subTitle: {
 		fontSize: 18
 	},
-	pos: {
-		marginBottom: 12
+	subTitle: {
+		fontSize: 15
 	}
 };
-const Landing = (props) => {
+
+const UserDetailsCard = (props) => {
 	const { classes } = props;
+	const { id, firstName, lastName, email } = props.user;
 	return (
-		<Grid container justify="center">
-			<Card className={classes.card}>
+		<Grid container justify="flex-start">
+			<Card className={classes.card} key={id}>
 				<CardContent>
 					<Typography color="textSecondary" component="h3" variant="h3" gutterBottom>
-						Git Graphed
+						{`${firstName} ${lastName}`}
 					</Typography>
 					<Typography color="textSecondary" component="h5" variant="h5">
-						Hey Everyone
-					</Typography>
-					<Typography component="p">
-						The purpose of this project is to give users visualized data about git. Github is an amazing and
-						colloborative platform but, it's data visualization implementations are garbage. There are a few
-						libraries out there that offer some insight into your repos, but we're better like, by far.
-						#graphs4days
+						{`Email: ${email}`}
 					</Typography>
 				</CardContent>
 			</Card>
@@ -50,8 +38,8 @@ const Landing = (props) => {
 	);
 };
 
-Landing.propTypes = {
+UserDetailsCard.propTypes = {
 	classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Landing);
+export default withStyles(styles)(UserDetailsCard);

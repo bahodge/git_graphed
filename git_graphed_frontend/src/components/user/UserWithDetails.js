@@ -1,32 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
 
+import UserDetailsCard from './dashboard/UserDetailsCard';
+
 import USER_WITH_DETAILS_QUERY from '../graphql/queries/users/UserWithDetailsQuery';
 
-export default class UserWithDetails extends Component {
-	render() {
-		const { userId: id } = this.props.match.params;
+const UserWithDetails = (props) => {
+	const { userId: id } = props.match.params;
 
-		return (
-			<div>
-				<Query query={USER_WITH_DETAILS_QUERY} variables={{ id: id }}>
-					{({ loading, error, data }) => {
-						if (loading) return <p>Loading...maybe, idk</p>;
-						if (error) return <p>Error</p>;
+	return (
+		<div>
+			<Query query={USER_WITH_DETAILS_QUERY} variables={{ id: id }}>
+				{({ loading, error, data }) => {
+					if (loading) return <p>Loading...maybe, idk</p>;
+					if (error) return <p>Error</p>;
 
-						const { id, firstName, lastName, email } = data.user;
+					return <UserDetailsCard user={data.user} />;
+				}}
+			</Query>
+			<Link to={`/users/${id}/repositories`}>User Repositories</Link>
+		</div>
+	);
+};
 
-						return (
-							<div key={id}>
-								<h1>{`${firstName} ${lastName}`}</h1>
-								<p>{`Email: ${email}`}</p>
-							</div>
-						);
-					}}
-				</Query>
-				<Link to={`/users/${id}/repositories`}>User Repositories</Link>
-			</div>
-		);
-	}
-}
+export default UserWithDetails;

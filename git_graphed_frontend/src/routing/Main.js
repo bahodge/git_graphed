@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 // import UserRoutes from './UserRoutes';
 // import PublicRoutes from './PublicRoutes';
@@ -17,6 +17,7 @@ export default class Main extends Component {
 				<Route exact path="/users/:userId" component={UserWithDetails} />
 				<Route exact path="/users" component={AllUsers} />
 				<Route path="/landing" component={Landing} />
+				<Redirect from="/" to="/landing" />
 			</Switch>
 		);
 	}
