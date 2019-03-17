@@ -12,10 +12,11 @@ const MetaHead = () => {
 };
 
 const Page = ({ children }) => {
+	console.log(children);
 	return (
 		<div>
 			<MetaHead />
-			<div className="ui container-fluid">{children}</div>
+			<div>{children}</div>
 		</div>
 	);
 };

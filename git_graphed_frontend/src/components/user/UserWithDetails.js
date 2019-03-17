@@ -18,7 +18,7 @@ export default class UserWithDetails extends Component {
 						const { id, firstName, lastName, email } = data.user;
 
 						return (
-							<div>
+							<div key={id}>
 								<h1>{`${firstName} ${lastName}`}</h1>
 								<p>{`Email: ${email}`}</p>
 							</div>

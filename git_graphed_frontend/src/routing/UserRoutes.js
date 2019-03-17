@@ -6,11 +6,11 @@ import UserRepositories from '../components/user/UserRepositories';
 
 const UserRoutes = () => {
 	return (
-		<Switch>
+		<div>
 			<Route exact path="/users/:userId/repositories" component={UserRepositories} />
 			<Route exact path="/users/:userId" component={UserWithDetails} />
 			<Route exact path="/users" component={AllUsers} />
-		</Switch>
+		</div>
 	);
 };
 
