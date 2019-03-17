@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-const PageHead = () => {
+const MetaHead = () => {
 	return (
 		<Helmet>
 			<meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
@@ -14,7 +14,7 @@ const PageHead = () => {
 const Page = ({ children }) => {
 	return (
 		<div>
-			<PageHead />
+			<MetaHead />
 			<div className="ui container-fluid">{children}</div>
 		</div>
 	);

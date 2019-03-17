@@ -25,7 +25,7 @@ const styles = {
 	}
 };
 
-const logoutButton = ({ menuButton }) => {
+const loggedInButtons = ({ menuButton }) => {
 	return (
 		<div>
 			<Link component={RouterLink} to="/users" children={<Button className={menuButton}>Users</Button>} />
@@ -36,7 +36,7 @@ const logoutButton = ({ menuButton }) => {
 	);
 };
 
-const logInButton = ({ menuButton }) => {
+const loggedOutButtons = ({ menuButton }) => {
 	return (
 		<Button href="http://localhost:4000/auth/github" className={menuButton}>
 			Signin
@@ -55,7 +55,7 @@ const NavBar = (props) => {
 					<Typography variant="h6" color="inherit" className={classes.grow}>
 						Git Graphed
 					</Typography>
-					{userId ? logoutButton(classes) : logInButton(classes)}
+					{userId ? loggedInButtons(classes) : loggedOutButtons(classes)}
 				</Toolbar>
 			</AppBar>
 		</div>

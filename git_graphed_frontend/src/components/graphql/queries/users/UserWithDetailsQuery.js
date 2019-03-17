@@ -1,9 +1,8 @@
 import gql from 'graphql-tag';
 
-const USER_QUERY = gql`
+const UserWithDetailsQuery = gql`
 	query UserQuery($id: ID!) {
 		user(id: $id) {
-			id
 			firstName
 			lastName
 			email
@@ -11,4 +10,4 @@ const USER_QUERY = gql`
 	}
 `;
 
-export default USER_QUERY;
+export default UserWithDetailsQuery;
