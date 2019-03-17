@@ -116,6 +116,6 @@ defmodule GitGraphedApi.Accounts do
   end
 
   def sync_user_repositories(user_id) do
-    Github.Sync.Repositories.call(user_id)
+    GitGraphedApi.TaskManager.perform_async(Github.Sync.Repositories, :call, [user_id])
   end
 end
