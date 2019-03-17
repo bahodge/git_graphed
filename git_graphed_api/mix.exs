@@ -48,7 +48,8 @@ defmodule GitGraphedApi.MixProject do
       {:poison, "~> 3.1"},
       {:jason, "~> 1.1"},
       {:ueberauth_github, "~> 0.7"},
-      {:envy, "~> 1.1.1"}
+      {:envy, "~> 1.1.1"},
+      {:dataloader, "~> 1.0.0"}
     ]
   end
 
