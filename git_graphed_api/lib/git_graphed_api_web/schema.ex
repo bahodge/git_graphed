@@ -20,12 +20,19 @@ defmodule GitGraphedApiWeb.Schema do
       resolve(&UserResolvers.User.user/3)
     end
 
+    @desc "Get all repositories for a user"
     field :user_repositories, list_of(:repository_type) do
       arg(:id, non_null(:id))
       resolve(&RepositoryResolvers.Repository.user_repositories/3)
     end
   end
 
-  # mutation do
-  # end
+  mutation do
+    @desc "Sync user repositories to local"
+    field(:sync_user_repositories, :user_type) do
+      arg(:id, non_null(:id))
+
+      resolve(&UserResolvers.User.sync_user_repositories/3)
+    end
+  end
 end

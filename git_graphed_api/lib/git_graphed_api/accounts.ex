@@ -114,4 +114,8 @@ defmodule GitGraphedApi.Accounts do
   def get_by_github_id(User, github_id) do
     Repo.get_by(User, github_id: github_id)
   end
+
+  def sync_user_repositories(user_id) do
+    Github.Sync.Repositories.call(user_id)
+  end
 end

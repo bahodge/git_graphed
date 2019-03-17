@@ -3,12 +3,10 @@ defmodule GitGraphedApiWeb.Resolvers.UserResolvers.User do
   alias GitGraphedApi.Accounts
   # alias GitGraphedApi.Repo
 
-  @desc "Get all users"
   def all_users(_parent, _args, _info) do
     {:ok, Accounts.list_users()}
   end
 
-  @desc "Get one user"
   def user(_parent, %{id: id} = _args, _info) do
     case Accounts.get_user!(id) do
       nil ->
@@ -19,7 +17,14 @@ defmodule GitGraphedApiWeb.Resolvers.UserResolvers.User do
     end
   end
 
-  # def register_user(_, %{input: input}, _) do
-  #   Accounts.create_user(input)
-  # end
+  def sync_user_repositories(_, %{id: user_id} = args, _info) do
+    case Accounts.get_user(user_id) do
+      nil ->
+        {:error, "Can't Find user"}
+
+      user ->
+        Accounts.sync_user_repositories(user_id)
+        {:ok, user}
+    end
+  end
 end
