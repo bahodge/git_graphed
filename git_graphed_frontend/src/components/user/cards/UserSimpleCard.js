@@ -22,14 +22,14 @@ const styles = {
 
 const UserSimpleCard = (props) => {
 	const { classes } = props;
-	const { firstName, lastName, id } = props.user;
+	const { username, id } = props.user;
 
 	return (
 		<Grid container justify="flex-start">
 			<Card className={classes.card} key={id}>
 				<CardContent>
 					<Typography color="textSecondary" component="p" variant="p" gutterBottom>
-						{`${firstName} ${lastName}`}
+						{`${username}`}
 					</Typography>
 				</CardContent>
 			</Card>

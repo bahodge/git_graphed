@@ -17,7 +17,7 @@ defmodule GitGraphedApiWeb.Resolvers.UserResolvers.User do
     end
   end
 
-  def sync_user_repositories(_, %{id: user_id} = args, _info) do
+  def sync_user_repositories(_, %{id: user_id} = _args, _info) do
     case Accounts.get_user(user_id) do
       nil ->
         {:error, "Can't Find user"}
