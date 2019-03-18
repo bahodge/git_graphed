@@ -12,10 +12,10 @@ const styles = {
 		maxWidth: 600
 	},
 	title: {
-		fontSize: 18
+		fontSize: 14
 	},
 	subTitle: {
-		fontSize: 15
+		fontSize: 10
 	}
 };
 
@@ -26,10 +26,16 @@ const UserDetailsCard = (props) => {
 		<Grid container justify="flex-start">
 			<Card className={classes.card} key={id}>
 				<CardContent>
-					<Typography color="textSecondary" component="h3" variant="h3" gutterBottom>
+					<Typography
+						className={classes.title}
+						color="textSecondary"
+						component="h3"
+						variant="h3"
+						gutterBottom
+					>
 						{`${firstName} ${lastName}`}
 					</Typography>
-					<Typography color="textSecondary" component="h5" variant="h5">
+					<Typography className={classes.title} color="textSecondary" component="p" variant="p">
 						{`Email: ${email}`}
 					</Typography>
 				</CardContent>

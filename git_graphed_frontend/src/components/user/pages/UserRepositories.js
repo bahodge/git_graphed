@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 // import { Link } from 'react-router-dom';
 
-import USER_REPOSITORIES_QUERY from '../graphql/queries/repositories/UserRepositoriesQuery';
+import USER_REPOSITORIES_QUERY from '../../graphql/queries/repositories/UserRepositoriesQuery';
 
 export default class UserRepositories extends Component {
 	render() {

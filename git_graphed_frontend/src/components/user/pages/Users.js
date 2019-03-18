@@ -2,21 +2,23 @@ import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
 
-import ALL_USERS_QUERY from '../graphql/queries/users/AllUsersQuery';
+import UserSimpleCard from '../cards/UserSimpleCard';
 
-export default class AllUsers extends Component {
+import USERS_QUERY from '../../graphql/queries/users/UsersQuery';
+
+export default class Users extends Component {
 	render() {
 		return (
 			<div>
-				<Query query={ALL_USERS_QUERY}>
+				<Query query={USERS_QUERY}>
 					{({ loading, error, data }) => {
 						if (loading) return <p>Loading...maybe, idk</p>;
 						if (error) return <p>Error :(</p>;
-						const { allUsers } = data;
-						return allUsers.map(({ firstName, lastName, id }) => {
+						const { users } = data;
+						return users.map((user) => {
 							return (
-								<Link key={id} to={`/users/${id}`}>
-									<div>{`${firstName} ${lastName}`}</div>
+								<Link key={user.id} to={`/users/${user.id}`}>
+									<UserSimpleCard user={user} />
 								</Link>
 							);
 						});

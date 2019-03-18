@@ -3,7 +3,7 @@ defmodule GitGraphedApiWeb.Resolvers.UserResolvers.User do
   alias GitGraphedApi.Accounts
   # alias GitGraphedApi.Repo
 
-  def all_users(_parent, _args, _info) do
+  def users(_parent, _args, _info) do
     {:ok, Accounts.list_users()}
   end
 

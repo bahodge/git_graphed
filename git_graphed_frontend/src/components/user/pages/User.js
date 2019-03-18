@@ -2,11 +2,11 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
 
-import UserDetailsCard from './dashboard/UserDetailsCard';
+import UserDetailsCard from '../cards/UserDetailsCard';
 
-import USER_WITH_DETAILS_QUERY from '../graphql/queries/users/UserWithDetailsQuery';
+import USER_WITH_DETAILS_QUERY from '../../graphql/queries/users/UserWithDetailsQuery';
 
-const UserWithDetails = (props) => {
+const User = (props) => {
 	const { userId: id } = props.match.params;
 
 	return (
@@ -24,4 +24,4 @@ const UserWithDetails = (props) => {
 	);
 };
 
-export default UserWithDetails;
+export default User;
