@@ -5,6 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
 
 const styles = {
 	card: {
@@ -20,15 +21,15 @@ const styles = {
 	}
 };
 
-const RepositorySimpleCard = (props) => {
-	const { classes } = props;
+const RepositoryWithDetailsCard = (props) => {
+	const { classes, repository: { repoName, id }, user } = props;
 
 	return (
 		<Grid container justify="flex-start">
-			<Card className={classes.card} key={id}>
+			<Card className={classes.card}>
 				<CardContent>
 					<Typography color="textSecondary" component="p" variant="p" gutterBottom>
-						This is a repo card
+						{repoName}
 					</Typography>
 				</CardContent>
 			</Card>
@@ -36,8 +37,8 @@ const RepositorySimpleCard = (props) => {
 	);
 };
 
-RepositorySimpleCard.propTypes = {
+RepositoryWithDetailsCard.propTypes = {
 	classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(RepositorySimpleCard);
+export default withStyles(styles)(RepositoryWithDetailsCard);

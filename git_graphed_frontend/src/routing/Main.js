@@ -8,11 +8,13 @@ import Landing from '../components/shared/Landing';
 import Users from '../components/user/pages/Users';
 import User from '../components/user/pages/User';
 import UserRepositories from '../components/user/pages/UserRepositories';
+import Repository from '../components/repositories/pages/Repository';
 
 export default class Main extends Component {
 	render() {
 		return (
 			<Switch>
+				<Route exact path="/users/:userId/repositories/:repositoryId" component={Repository} />
 				<Route exact path="/users/:userId/repositories" component={UserRepositories} />
 				<Route exact path="/users/:userId" component={User} />
 				<Route exact path="/users" component={Users} />

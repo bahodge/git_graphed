@@ -15,6 +15,13 @@ defmodule GitGraphedApiWeb.Resolvers.RepositoryResolvers.Repository do
     {:ok, Repo.all(query)}
   end
 
+  def get_repository(_parent, %{id: id}, _info) do
+    case Repos.get_repository(id) do
+      nil -> {:error, "No Repo Found with #{id}"}
+      repository -> {:ok, repository}
+    end
+  end
+
   @desc "Repository Owner User"
   def user(%Repos.Repository{} = repo, _args, _info) do
     query =

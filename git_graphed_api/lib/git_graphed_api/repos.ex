@@ -36,6 +36,7 @@ defmodule GitGraphedApi.Repos do
 
   """
   def get_repository!(id), do: Repo.get!(Repository, id)
+  def get_repository(id), do: Repo.get(Repository, id)
 
   @doc """
   Creates a repository.

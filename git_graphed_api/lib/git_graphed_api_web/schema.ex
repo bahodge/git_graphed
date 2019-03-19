@@ -25,6 +25,13 @@ defmodule GitGraphedApiWeb.Schema do
       arg(:id, non_null(:id))
       resolve(&RepositoryResolvers.Repository.user_repositories/3)
     end
+
+    @desc "Get a single repository"
+    field :get_repository, :repository_type do
+      arg(:id, non_null(:id))
+
+      resolve(&RepositoryResolvers.get_repository/3)
+    end
   end
 
   mutation do
