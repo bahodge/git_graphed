@@ -15,7 +15,7 @@ defmodule GitGraphedApiWeb.Resolvers.RepositoryResolvers.Repository do
     {:ok, Repo.all(query)}
   end
 
-  def get_repository(_parent, %{id: id}, _info) do
+  def repository(_parent, %{id: id} = _args, _info) do
     case Repos.get_repository(id) do
       nil -> {:error, "No Repo Found with #{id}"}
       repository -> {:ok, repository}

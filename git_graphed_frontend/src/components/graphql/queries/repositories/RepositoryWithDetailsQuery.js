@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 const REPOSITORY_WITH_DETAILS_QUERY = gql`
 	query GetRepositoryQuery($id: ID!) {
-		getRepository(id: $id) {
+		repository(id: $id) {
 			id
 			repoName
 			repoPrivate

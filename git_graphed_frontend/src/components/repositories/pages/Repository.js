@@ -35,8 +35,9 @@ class Repository extends Component {
 						if (loading) return <p>Loading...maybe, idk</p>;
 						if (error) return <p>Error</p>;
 						console.log(data);
-						return <div>Hello</div>;
-						// return <RepositoryWithDetailsCard repository={repository} />;
+						const { repository } = data;
+						// return <div>Hello</div>;
+						return <RepositoryWithDetailsCard repository={repository} />;
 					}}
 				</Query>
 			</div>

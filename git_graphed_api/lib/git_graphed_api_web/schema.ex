@@ -27,10 +27,10 @@ defmodule GitGraphedApiWeb.Schema do
     end
 
     @desc "Get a single repository"
-    field :get_repository, :repository_type do
+    field :repository, :repository_type do
       arg(:id, non_null(:id))
 
-      resolve(&RepositoryResolvers.get_repository/3)
+      resolve(&RepositoryResolvers.Repository.repository/3)
     end
   end
 

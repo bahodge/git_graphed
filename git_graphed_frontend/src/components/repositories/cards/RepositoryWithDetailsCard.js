@@ -22,14 +22,17 @@ const styles = {
 };
 
 const RepositoryWithDetailsCard = (props) => {
-	const { classes, repository: { repoName, id }, user } = props;
+	const { classes, repository: { repoName, id, repoPrivate }, user } = props;
 
 	return (
 		<Grid container justify="flex-start">
 			<Card className={classes.card}>
 				<CardContent>
-					<Typography color="textSecondary" component="p" variant="p" gutterBottom>
-						{repoName}
+					<Typography color="textSecondary" component="p" gutterBottom>
+						Repository Name: {repoName}
+					</Typography>
+					<Typography color="textSecondary" component="p" gutterBottom>
+						Private Repository: {repoPrivate}
 					</Typography>
 				</CardContent>
 			</Card>
