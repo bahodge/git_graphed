@@ -71,11 +71,13 @@ const UserDetailsCard = (props) => {
               if (loading) return <Button disabled>Syncing</Button>;
               if (error) return <p>Something Went Wrong!</p>;
 
-              const data = client.store.readQuery({
-                query: USER_REPOSITORIES_QUERY({ id: id })
-              });
+              // console.log(res);
+              // const data = client.readQuery({
+              //   query: USER_REPOSITORIES_QUERY,
+              //   variables: { id: id }
+              // });
 
-              console.log(data);
+              // console.log(data);
 
               return <Button onClick={syncUserRepositories}>Sync Repos</Button>;
             }}
