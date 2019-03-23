@@ -20,7 +20,7 @@ defmodule GitGraphedApi.MixProject do
   def application do
     [
       mod: {GitGraphedApi.Application, [:ueberauth_github, :httpoison]},
-      extra_applications: app_list(Mix.env)
+      extra_applications: app_list(Mix.env())
     ]
   end
 

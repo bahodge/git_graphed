@@ -25,15 +25,38 @@ defmodule Github.Sync.Repositories do
   end
 
   defp parse_body(response) do
-    result =
-      Poison.Parser.parse!(response.body)
-      |> Enum.map(fn repo ->
-        %{
-          repo_id: repo["id"],
-          repo_name: repo["name"],
-          repo_private: repo["private"]
-        }
-      end)
+    parsed_body = Poison.Parser.parse!(response.body)
+
+    Enum.map(parsed_body, fn repo ->
+      %{
+        repo_id: repo["id"],
+        repo_name: repo["name"],
+        repo_private: repo["private"],
+        fullname: repo["full_name"],
+        html_url: repo["html_url"],
+        description: repo["description"],
+        language: repo["language"],
+        default_branch: repo["default_branch"],
+        stargazers_count: repo["stargazers_count"],
+        watchers_count: repo["watchers_count"],
+        forks_count: repo["forks_count"],
+        open_issues_count: repo["open_issues_count"],
+        size: repo["size"],
+        forks: repo["forks"],
+        open_issues: repo["open_issues"],
+        watchers: repo["watchers"],
+        fork: repo["fork"],
+        has_issues: repo["has_issues"],
+        has_projects: repo["has_projects"],
+        has_downloads: repo["has_downloads"],
+        has_wiki: repo["has_wiki"],
+        has_pages: repo["has_pages"],
+        archived: repo["archived"],
+        repo_created_at: repo["created_at"],
+        repo_updated_at: repo["updated_at"],
+        repo_pushed_at: repo["pushed_at"]
+      }
+    end)
   end
 
   defp headers(token) do
