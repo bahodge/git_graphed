@@ -23,7 +23,31 @@ const styles = {
 const RepositoryWithDetailsCard = (props) => {
   const {
     classes,
-    repository: { repoName, id, repoPrivate }
+    repository: {
+      id,
+      repoPrivate,
+      archived,
+      fork,
+      hasDownloads,
+      hasIssues,
+      hasPages,
+      hasProjects,
+      hasWiki,
+      repoName,
+      defaultBranch,
+      description,
+      fullName,
+      htmlUrl,
+      language,
+      forks,
+      forksCount,
+      openIssues,
+      openIssuesCount,
+      size,
+      stargazersCount,
+      watchers,
+      WatchersCount
+    }
   } = props;
 
   return (

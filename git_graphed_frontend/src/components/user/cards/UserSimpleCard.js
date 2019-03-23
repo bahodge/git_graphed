@@ -28,12 +28,7 @@ const UserSimpleCard = (props) => {
     <Grid container justify="flex-start">
       <Card className={classes.card} key={id}>
         <CardContent>
-          <Typography
-            color="textSecondary"
-            component="p"
-            variant="p"
-            gutterBottom
-          >
+          <Typography color="textSecondary" component="p" gutterBottom>
             {`${username}`}
           </Typography>
         </CardContent>

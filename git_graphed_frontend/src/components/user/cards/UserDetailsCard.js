@@ -66,18 +66,9 @@ const UserDetailsCard = (props) => {
           </Typography>
 
           <Mutation mutation={SYNC_USER_REPOSITORIES} variables={{ id: id }}>
-            {(syncUserRepositories, res) => {
-              const { loading, error, client } = res;
+            {(syncUserRepositories, { loading, error }) => {
               if (loading) return <Button disabled>Syncing</Button>;
               if (error) return <p>Something Went Wrong!</p>;
-
-              // console.log(res);
-              // const data = client.readQuery({
-              //   query: USER_REPOSITORIES_QUERY,
-              //   variables: { id: id }
-              // });
-
-              // console.log(data);
 
               return <Button onClick={syncUserRepositories}>Sync Repos</Button>;
             }}

@@ -13,6 +13,7 @@ defmodule Github.Sync.Repositories do
     url = requested_endpoint(username)
 
     make_request!(url, headers(oauth_token), options())
+    |> parse_body
     |> Enum.each(fn repo ->
       update_or_create_repository(repo[:repo_id], user_id, repo)
     end)
@@ -20,8 +21,7 @@ defmodule Github.Sync.Repositories do
 
   defp make_request!(url, headers, options) do
     HTTPoison.start()
-    response = HTTPoison.get!(url, headers, options)
-    parse_body(response)
+    HTTPoison.get!(url, headers, options)
   end
 
   defp parse_body(response) do
