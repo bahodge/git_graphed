@@ -49,6 +49,12 @@ config :phoenix, :plug_init_mode, :runtime
 
 config :git_graphed_api, :environment, :dev
 
+use Mix.Config
+
+# config :ueberauth, Ueberauth.Strategy.Github.OAuth,
+#   client_id: "clientid",
+#   client_secret: "clientsecret"
+
 # Configure your database # EXAMPLE!
 # config :git_graphed_api, GitGraphedApi.Repo,
 #   username: "your_username_for_your_local_database",

@@ -20,9 +20,13 @@ defmodule GitGraphedApi.MixProject do
   def application do
     [
       mod: {GitGraphedApi.Application, [:ueberauth_github, :httpoison]},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: app_list(Mix.env)
     ]
   end
+
+  # defp app_list(:dev), do: [:dotenv | app_list]
+  defp app_list(_), do: app_list()
+  defp app_list(), do: [:logger, :runtime_tools]
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
@@ -48,7 +52,6 @@ defmodule GitGraphedApi.MixProject do
       {:poison, "~> 3.1"},
       {:jason, "~> 1.1"},
       {:ueberauth_github, "~> 0.7"},
-      {:envy, "~> 1.1.1"},
       {:dataloader, "~> 1.0.0"}
     ]
   end
