@@ -67,5 +67,6 @@ defmodule GitGraphedApi.Repos.Repository do
       :repo_pushed_at
     ])
     |> validate_required([:repo_name, :repo_id, :repo_private])
+    |> foreign_key_constraint(:user_id)
   end
 end
