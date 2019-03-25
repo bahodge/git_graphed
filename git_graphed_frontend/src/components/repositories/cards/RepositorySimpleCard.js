@@ -8,6 +8,9 @@ import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 
 const styles = {
+  root: {
+    flexGrow: 1
+  },
   card: {
     minWidth: 275,
     maxWidth: 600,
@@ -29,15 +32,21 @@ const RepositorySimpleCard = (props) => {
   } = props;
 
   return (
-    <Grid container justify="flex-start">
-      <Card className={classes.card}>
-        <CardContent>
-          <Typography color="textSecondary" component="p" gutterBottom>
-            <Link to={`/users/${user.id}/repositories/${id}`}>{repoName}</Link>
-          </Typography>
-        </CardContent>
-      </Card>
-    </Grid>
+    <div>
+      <Grid container justify="flex-start">
+        <Grid item xs={3}>
+          <Card className={classes.card}>
+            <CardContent>
+              <Typography color="textSecondary" component="p" gutterBottom>
+                <Link to={`/users/${user.id}/repositories/${id}`}>
+                  {repoName}
+                </Link>
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </div>
   );
 };
 

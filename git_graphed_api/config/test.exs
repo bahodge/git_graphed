@@ -12,7 +12,7 @@ config :logger, level: :warn
 # Configure your database
 config :git_graphed_api, GitGraphedApi.Repo,
   username: "postgres",
-  password: "qwerty2017!",
+  password: "qwerty2017",
   database: "git_graphed_api_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

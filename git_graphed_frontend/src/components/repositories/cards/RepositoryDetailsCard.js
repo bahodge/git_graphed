@@ -4,6 +4,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Grid from "@material-ui/core/Grid";
 import PropTypes from "prop-types";
+
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -18,8 +19,6 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 
 const styles = {
   card: {
-    minWidth: 300,
-    maxWidth: 300,
     margin: 10
   },
   table: {
@@ -31,60 +30,49 @@ const RepositoryDetailsCard = (props) => {
   const {
     classes,
     repository: {
-      id,
-      repoPrivate,
-      archived,
-      fork,
-      hasDownloads,
-      hasIssues,
-      hasPages,
-      hasProjects,
-      hasWiki
+      language,
+      defaultBranch,
+      forks,
+      forksCount,
+      openIssues,
+      openIssuesCount,
+      size,
+      stargazersCount,
+      watchers,
+      watchersCount
     }
   } = props;
 
   return (
     <Card className={classes.card}>
       <CardContent>
-        <Table className={classes.table}>
+        <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Flag</TableCell>
-              <TableCell align="left">Value</TableCell>
+              <TableCell>Primary Language</TableCell>
+              <TableCell>Default Branch</TableCell>
+              <TableCell>Forks</TableCell>
+              <TableCell>Forks Count</TableCell>
+              <TableCell>Open Issues</TableCell>
+              <TableCell>Open Issues Count</TableCell>
+              <TableCell>Size</TableCell>
+              <TableCell>Stargazers Count</TableCell>
+              <TableCell>Watchers</TableCell>
+              <TableCell>Watchers Count</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             <TableRow>
-              <TableCell>Private</TableCell>
-              <TableCell align="left">{`${repoPrivate}`}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Archived</TableCell>
-              <TableCell align="left">{`${archived}`}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Forked</TableCell>
-              <TableCell align="left">{`${fork}`}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Downloaded</TableCell>
-              <TableCell align="left">{`${hasDownloads}`}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Open Issues</TableCell>
-              <TableCell align="left">{`${hasIssues}`}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Pages</TableCell>
-              <TableCell align="left">{`${hasPages}`}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Projects</TableCell>
-              <TableCell align="left">{`${hasProjects}`}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Wiki</TableCell>
-              <TableCell align="left">{`${hasWiki}`}</TableCell>
+              <TableCell>{`${language}`}</TableCell>
+              <TableCell>{`${defaultBranch}`}</TableCell>
+              <TableCell>{`${forks}`}</TableCell>
+              <TableCell>{`${forksCount}`}</TableCell>
+              <TableCell>{`${openIssues}`}</TableCell>
+              <TableCell>{`${openIssuesCount}`}</TableCell>
+              <TableCell>{`${size}`}</TableCell>
+              <TableCell>{`${stargazersCount}`}</TableCell>
+              <TableCell>{`${watchers}`}</TableCell>
+              <TableCell>{`${watchersCount}`}</TableCell>
             </TableRow>
           </TableBody>
         </Table>

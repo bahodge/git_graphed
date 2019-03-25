@@ -10,15 +10,29 @@ defmodule GitGraphedApi.AccountsTest do
       first_name: "Git",
       last_name: "Graphed",
       email: "gitgraphed@gitgraphed.com",
-      username: "gitgraphed"
+      username: "gitgraphed",
+      provider: "github",
+      token: "jadspofjasd",
+      github_id: "123"
     }
     @update_attrs %{
-      first_name: "GitGr",
-      last_name: "Aphed",
+      first_name: "Git1",
+      last_name: "Graphed1",
       email: "gitgraphed1@gitgraphed.com",
-      username: "gitgraphed1"
+      username: "gitgraphed1",
+      provider: "github1",
+      token: "jad1spofjasd",
+      github_id: "1234"
     }
-    @invalid_attrs %{first_name: nil, last_name: nil, email: nil, username: nil}
+    @invalid_attrs %{
+      first_name: nil,
+      last_name: nil,
+      email: "nil",
+      username: nil,
+      provider: nil,
+      token: nil,
+      github_id: nil
+    }
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
@@ -75,6 +89,21 @@ defmodule GitGraphedApi.AccountsTest do
     test "change_user/1 returns a user changeset" do
       user = user_fixture()
       assert %Ecto.Changeset{} = Accounts.change_user(user)
+    end
+
+    test "get_by_email/2 returns a user" do
+      user = user_fixture()
+      assert Accounts.get_by_email(User, user.email) == user
+    end
+
+    test "get_by_username/2 returns a user" do
+      user = user_fixture()
+      assert Accounts.get_by_username(User, user.username) == user
+    end
+
+    test "get_by_github_id/2 returns a user" do
+      user = user_fixture()
+      assert Accounts.get_by_github_id(User, user.github_id) == user
     end
   end
 end
