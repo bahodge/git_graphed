@@ -115,6 +115,10 @@ defmodule GitGraphedApi.Accounts do
     Repo.get_by(User, github_id: github_id)
   end
 
+  def get_user_with_repos(user_id) do
+    Repo.get(User, user_id) |> Repo.preload(:repositories)
+  end
+
   def sync_user_repositories(user_id) do
     GitGraphedApi.TaskManager.perform_async(Github.Sync.Repositories, :call, [user_id])
   end
