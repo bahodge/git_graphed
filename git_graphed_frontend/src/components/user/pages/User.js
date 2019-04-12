@@ -24,6 +24,7 @@ const styles = {
   }
 };
 
+// this might be able to be turned into a functional component
 class User extends Component {
   render() {
     const { userId: id } = this.props.match.params;
