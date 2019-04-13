@@ -20,6 +20,8 @@ const styles = {
   }
 };
 
+
+// for route `/users`
 const UserSimpleCard = (props) => {
   const { classes } = props;
   const { username, id } = props.user;

@@ -1,0 +1,10 @@
+.landing-cont {
+  height: 50vh;
+  width: 60%;
+}
+.landing-header {
+  margin-top: 3vh !important;
+}
+.landing-content {
+  margin: 4vh 0 !important;
+}

@@ -36,10 +36,10 @@ const UserDetailsCard = (props) => {
     user,
     user: { id, firstName, lastName, email, username }
   } = props;
-
   return (
     <Grid container justify="flex-start">
-      <Card className={classes.card} key={id}>
+    <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
+    <Card className={classes.card} key={id}>
         <CardContent>
           <Typography
             className={classes.title}
@@ -75,12 +75,15 @@ const UserDetailsCard = (props) => {
           </Mutation>
         </CardContent>
       </Card>
+    </div>
+      
 
       <Query query={USER_REPOSITORIES_QUERY} variables={{ id: id }}>
         {({ loading, error, data }) => {
           if (loading) return <div>Loading...</div>;
           if (error) return <div>Something Went Wrong!</div>;
           return data.userRepositories.map((repository) => {
+            console.log(repository)
             return (
               <RepositorySimpleCard
                 key={repository.id}

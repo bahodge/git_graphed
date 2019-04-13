@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Main from './routing/Main';
+import MainRouter from './routing/MainRouter';
 import Page from './components/shared/Page';
-import NavBar from './components/shared/NavBar';
+import Header from './components/header/Header';
 
 const styles = (theme) => ({
 	root: {
@@ -24,12 +22,8 @@ class App extends Component {
 		const { classes } = this.props;
 		return (
 			<Page>
-				<NavBar />
-				<Grid item xs={12}>
-					<Paper className={classes.paper}>
-						<Main />
-					</Paper>
-				</Grid>
+				<Header/>
+				<MainRouter />
 			</Page>
 		);
 	}

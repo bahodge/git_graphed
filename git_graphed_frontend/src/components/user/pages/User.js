@@ -24,6 +24,7 @@ const styles = {
   }
 };
 
+// for route `/users/:id`
 class User extends Component {
   render() {
     const { userId: id } = this.props.match.params;
