@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import MainRouter from './routing/MainRouter';
 import Page from './components/shared/Page';
 import Header from './components/header/Header';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const styles = (theme) => ({
 	root: {
@@ -24,6 +25,7 @@ class App extends Component {
 			<Page>
 				<Header/>
 				<MainRouter />
+				<CircularProgress className="spinner"/>
 			</Page>
 		);
 	}
