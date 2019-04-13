@@ -5,7 +5,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Link } from 'react-router-dom';
 import { loggedInNav } from '../../staticData/navItems';
-import Person from '@material-ui/icons/Person';
+import Group from '@material-ui/icons/Group';
 import Assignment from '@material-ui/icons/Assignment';
 import Logout from '@material-ui/icons/PersonOutline';
 import Home from '@material-ui/icons/DesktopMac';
@@ -23,7 +23,7 @@ const LoggedIn = () => (
       {loggedInNav.map((text, index) => (
         <Link to={text[1]} key={index}>
           <ListItem button>
-            <ListItemIcon>{index % 2 === 0 ? <Assignment /> : <Person />}</ListItemIcon>
+            <ListItemIcon>{index % 2 === 0 ? <Assignment /> : <Group />}</ListItemIcon>
             <ListItemText primary={text[0]} />
           </ListItem>
         </Link>

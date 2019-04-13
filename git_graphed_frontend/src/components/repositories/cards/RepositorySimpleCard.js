@@ -1,57 +1,41 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import CardActions from "@material-ui/core/CardActions";
 import { Link } from "react-router-dom";
+import '../../../css/Repository.css'
+import Button from "@material-ui/core/Button";
 
-const styles = {
-  root: {
-    flexGrow: 1
-  },
-  card: {
-    minWidth: 275,
-    maxWidth: 600,
-    margin: 10
-  },
-  title: {
-    fontSize: 12
-  },
-  subTitle: {
-    fontSize: 10
-  }
-};
-
-const RepositorySimpleCard = (props) => {
+const RepositorySimpleCard = ({repository, userId}) => {
   const {
-    classes,
-    repository: { repoName, id },
-    user
-  } = props;
-
+    repoName, id
+  } = repository;
   return (
-    <div>
-      <Grid container justify="flex-start">
-        <Grid item xs={3}>
-          <Card className={classes.card}>
-            <CardContent>
-              <Typography color="textSecondary" component="p" gutterBottom>
-                <Link to={`/users/${user.id}/repositories/${id}`}>
-                  {repoName}
-                </Link>
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
+    <div className="repository-highlight-card">
+      <Card>
+        <CardContent>
+          <div>
+            <Typography>
+              Repository Name:
+            </Typography>
+            <Typography color="textSecondary" component="p" gutterBottom>
+                {repoName}
+            </Typography>    
+          </div>
+        </CardContent>
+        <CardActions>
+        <Button color="primary" size="small"><Link to={`/users/${userId}/repositories/${id}`}>View</Link></Button>
+        </CardActions>
+      </Card>
     </div>
   );
 };
 
 RepositorySimpleCard.propTypes = {
-  classes: PropTypes.object.isRequired
+  userId: PropTypes.string,
+  repository: PropTypes.object,
 };
 
-export default withStyles(styles)(RepositorySimpleCard);
+export default RepositorySimpleCard;

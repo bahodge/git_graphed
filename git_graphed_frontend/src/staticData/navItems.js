@@ -2,4 +2,4 @@ export const loggedOutNav = [['Login', '/visitor/login'], ['Register', 'visitor/
 
 export const infoNav = [['About Us', '/visitor/about'], ['Licensing', '/visitor/license']];
 
-export const loggedInNav = [['Repositories', 'user/repositories'], ['Profile','/user/profile']];
+export const loggedInNav = [['Repositories', 'user/repositories'], ['Linked Users','/users']];
