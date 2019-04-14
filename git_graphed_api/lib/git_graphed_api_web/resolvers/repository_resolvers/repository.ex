@@ -35,6 +35,8 @@ defmodule GitGraphedApiWeb.Resolvers.RepositoryResolvers.Repository do
 
   @desc "Repositories for a particular user"
   def user_repositories(_parent, %{id: user_id} = _args, _info) do
+    IO.inspect(_args)
+
     query =
       from(repo in Repos.Repository,
         where: repo.user_id == ^user_id,
