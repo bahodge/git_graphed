@@ -1,31 +1,31 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Typography from '@material-ui/core/Typography';
-import Toolbar from '@material-ui/core/Toolbar';
-import Divider from '@material-ui/core/Divider';
-import CardHeader from '@material-ui/core/CardHeader';
-import About from './About';
-import MainNav from './MainNav';
-import '../../css/Header.css';
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Drawer from "@material-ui/core/Drawer";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import AppBar from "@material-ui/core/AppBar";
+import Typography from "@material-ui/core/Typography";
+import Toolbar from "@material-ui/core/Toolbar";
+import Divider from "@material-ui/core/Divider";
+import CardHeader from "@material-ui/core/CardHeader";
+import About from "./About";
+import MainNav from "./MainNav";
+import "../../css/Header.css";
 
 const drawerWidth = 240;
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
-    display: 'flex',
+    display: "flex"
   },
   appBar: {
     width: `100%`,
     zIndex: 1000,
-    marginLeft: drawerWidth,
+    marginLeft: drawerWidth
   },
   drawer: {
     width: drawerWidth,
-    flexShrink: 0,
+    flexShrink: 0
   },
   drawerPaper: {
     width: drawerWidth,
@@ -36,11 +36,11 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3,
-  },
+    padding: theme.spacing.unit * 3
+  }
 });
 
-const Header = props => {
+const Header = (props) => {
   const { classes } = props;
 
   return (
@@ -57,21 +57,21 @@ const Header = props => {
         className={classes.drawer}
         variant="permanent"
         classes={{
-          paper: classes.drawerPaper,
+          paper: classes.drawerPaper
         }}
         anchor="left"
       >
-      <CardHeader title={"Title"} subheader={`Welcome, Some One`}/>
-        <MainNav/>
+        <CardHeader title={"Title"} subheader={`Welcome, Some One`} />
+        <MainNav />
         <Divider />
-        <About/>
+        <About />
       </Drawer>
     </div>
   );
-}
+};
 
 Header.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Header);
