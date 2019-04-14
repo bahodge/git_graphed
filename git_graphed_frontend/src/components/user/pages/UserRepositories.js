@@ -6,6 +6,7 @@ import USER_REPOSITORIES_QUERY from "../../graphql/queries/repositories/UserRepo
 
 export default class UserRepositories extends Component {
   render() {
+    
     const { userId: id } = this.props.match.params;
     return (
       <div>

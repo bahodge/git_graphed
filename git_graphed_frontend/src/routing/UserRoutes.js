@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import AllUsers from '../components/user/AllUsers';
-import UserWithDetails from '../components/user/UserWithDetails';
-import UserRepositories from '../components/user/UserRepositories';
+import UserWithDetails from '../components/user/pages/User';
+import UserRepositories from '../components/user/pages/UserRepositories';
 
 const UserRoutes = () => {
 	return (

@@ -1,0 +1,35 @@
+.users-container {
+  height: 70vh;
+  width: 80%;
+}
+.users-container > h1 {
+  text-align-last: center;
+}
+.users-divider {
+  margin: 3vh 0 !important;
+
+}
+.users-content-container {
+  display: flex;
+  justify-content: center;
+}
+.users-content {
+
+}
+.user-container {
+  height: 80vh;
+  width: 85%;
+}
+.user-repositories-divider {
+  margin: 3vh 0 !important;
+}
+.highlighted-user-cont {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin-bottom: 3vh;
+}
+.user-repositories-cont {
+  display: flex;
+  flex-wrap: wrap;
+}
