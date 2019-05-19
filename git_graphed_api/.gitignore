@@ -37,3 +37,4 @@ git_graphed_api-*.tar
 # variables.
 /config/*.secret.exs
 *.env
+

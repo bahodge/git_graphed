@@ -55,13 +55,12 @@ use Mix.Config
 #   client_id: "clientid",
 #   client_secret: "clientsecret"
 
-# Configure your database # EXAMPLE!
-# config :git_graphed_api, GitGraphedApi.Repo,
-#   username: "your_username_for_your_local_database",
-#   password: "your_password_for_your_local_database",
-#   database: "git_graphed_api_dev",
-#   hostname: "localhost",
-#   pool_size: 10
+ config :git_graphed_api, GitGraphedApi.Repo,
+   username: "postgres",
+   password: "postgres",
+   database: "git_graphed_api_dev",
+   hostname: "localhost",
+   pool_size: 10
 
 # create a local 'dev.secret.exs' file to hold your secret db config
 import_config "dev.secret.exs"
