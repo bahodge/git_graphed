@@ -7,7 +7,7 @@ This is a passion project. All we're really doing is getting practice with some 
 
 ## whoami
 
-    - idk
+    - A non robotic human who loves github, but their data visualization is terrible.
 
 ## Technologies
 
